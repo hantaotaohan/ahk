@@ -182,3 +182,17 @@ return                                                               ;|
 ;Run excel.exe,,UseErrorLevel                                        ;|
 ;return                                                              ;|
 ;---------------------------------------------------------------------o
+
+;=====================================================================o
+;                                Alacritty                           ;|
+;-----------------------------------o---------------------------------o
+#IfWinActive Alacritty                                               ;|
+^+v::                                                                ;|
+    ClipboardBackup := Clipboard                                     ;|
+    FixString := StrReplace(Clipboard, "`r`n", "`n")                 ;|
+    Clipboard := FixString                                           ;|
+    Send ^+v                                                         ;|
+    Clipboard := ClipboardBackup                                     ;|
+    return                                                           ;|
+#IfWinActive                                                         ;|
+;-----------------------------------o---------------------------------o
